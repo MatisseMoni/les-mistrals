@@ -1,0 +1,97 @@
+/*
+ * Ameliorations de lecture ajoutees a la copie conservatoire.
+ * Le theme Blogger d origine bridait la colonne de texte a 488 px et laissait
+ * les photos s afficher a des largeurs allant de 133 a 856 px.
+ * Ce fichier elargit la zone de lecture et harmonise les photos.
+ * Il ne modifie aucun contenu : seule la presentation change.
+ */
+
+/* ---- Zone de lecture elargie ---- */
+.content-outer, .content-fauxborder-left, .content-inner,
+.main-outer, .main-fauxborder-left, .main-inner,
+.header-outer, .header-inner,
+.footer-outer, .footer-inner,
+.region-inner {
+  max-width: 1320px !important;
+}
+
+.columns-inner,
+.column-center-outer,
+.column-center-inner {
+  width: 960px !important;
+}
+
+.post, .post-body { width: auto !important; }
+
+.post-body {
+  font-size: 15px !important;
+  line-height: 1.65 !important;
+}
+
+/* ---- Conteneurs de photos aplatis ----
+   Blogger enveloppe chaque photo dans un tableau ou un div de largeur
+   variable. On les neutralise pour que seule la photo decide. */
+.post-body .separator,
+.post-body .tr-caption-container,
+.post-body table,
+.post-body tbody,
+.post-body tr,
+.post-body td {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  border: 0 !important;
+}
+
+/* Le texte de recit vit parfois lui aussi dans une cellule de tableau :
+   on ne le centre pas, seules les photos sont centrees par leur marge auto. */
+.post-body td { text-align: inherit !important; }
+
+/* ---- Photos harmonisees ----
+   La largeur maximale de chaque photo est inscrite dans son attribut style,
+   calculee a partir de sa definition reelle pour ne jamais la deformer. */
+.post-body img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  margin: 1.6em auto 0.4em !important;
+  border-radius: 3px;
+  /* Le theme entourait chaque photo d un cadre blanc de 5 px. On le retire. */
+  padding: 0 !important;
+  background: none !important;
+  border: 0 !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, .35);
+}
+
+/* Le cadre blanc etait aussi pose sur les conteneurs et les vignettes. */
+.post-body .tr-caption-container,
+.post-body .separator,
+.Profile img, .Image img, .BlogList .item-thumbnail img {
+  padding: 0 !important;
+  background: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* ---- Legendes lisibles ----
+   Elles etaient en gris fonce de 10,8 px sur fond brun. */
+.post-body td.tr-caption {
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  color: #f7e3bd !important;
+  padding: .3em 1em 1.6em !important;
+  font-style: italic;
+}
+
+/* ---- Confort de lecture sur petit ecran ---- */
+@media (max-width: 1000px) {
+  .columns-inner, .column-center-outer, .column-center-inner {
+    width: 100% !important;
+  }
+  .column-right-outer { float: none !important; margin: 0 !important; width: 100% !important; }
+  .post-body img { max-width: 100% !important; }
+}

@@ -97,3 +97,11 @@
   .column-right-outer { float: none !important; margin: 0 !important; width: 100% !important; }
   .post-body img { max-width: 100% !important; }
 }
+
+/* Legende dont la photo, hebergee sur un serveur tiers, a disparu : le texte
+   de la famille est conserve et presente comme un paragraphe ordinaire. */
+.post-body p.legende-orpheline {
+  font-style: italic;
+  color: #f0dcb6;
+  margin: 1.2em 0;
+}

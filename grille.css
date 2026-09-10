@@ -1,0 +1,78 @@
+/*
+ * Affichage en grille des suites de photos, avec ouverture en plein ecran.
+ * Ajout d essai, applique uniquement aux pages qui appellent cette feuille.
+ */
+
+.grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 1.8em 0;
+}
+
+.grille figure { margin: 0; position: relative; }
+
+.grille img {
+  width: 100% !important;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block !important;
+  margin: 0 !important;
+  max-width: none !important;
+  border-radius: 3px;
+  cursor: zoom-in;
+  background: rgba(0, 0, 0, .2);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.grille figure:hover img {
+  transform: scale(1.02);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .5);
+}
+
+.grille figcaption {
+  font-size: 12px;
+  line-height: 1.4;
+  color: #e8d3ae;
+  padding: .4em .2em 0;
+  font-style: italic;
+}
+
+/* Une grille d une seule photo reste affichee en grand, pas en vignette. */
+.grille--seule { grid-template-columns: minmax(0, 620px); justify-content: center; }
+.grille--seule img { aspect-ratio: auto; object-fit: contain; }
+
+/* ---- Plein ecran ---- */
+.visionneuse {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(12, 8, 6, .96);
+  display: none; align-items: center; justify-content: center;
+  flex-direction: column; padding: 2vh 2vw;
+}
+.visionneuse[data-ouverte="oui"] { display: flex; }
+.visionneuse img {
+  max-width: 100%; max-height: 82vh;
+  object-fit: contain; border-radius: 3px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, .7);
+}
+.visionneuse figcaption {
+  color: #f3e3c4; font-size: 15px; text-align: center;
+  margin-top: 1em; max-width: 780px; font-style: italic;
+}
+.visionneuse .compteur {
+  color: #b9a184; font-size: 13px; margin-top: .5em; letter-spacing: .04em;
+}
+.visionneuse button {
+  position: absolute; background: none; border: 0; cursor: pointer;
+  color: #f3e3c4; font-size: 34px; line-height: 1; padding: .3em .6em;
+  opacity: .65; transition: opacity .15s;
+}
+.visionneuse button:hover { opacity: 1; }
+.visionneuse .fermer { top: 1vh; right: 1vw; font-size: 30px; }
+.visionneuse .precedent { left: 1vw; }
+.visionneuse .suivant { right: 1vw; }
+
+@media (max-width: 700px) {
+  .grille { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 6px; }
+  .visionneuse .precedent, .visionneuse .suivant { font-size: 26px; }
+}

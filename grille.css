@@ -5,7 +5,9 @@
 
 .grille {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  /* 240 px de largeur minimale : dans une colonne de 1108 px, cela donne
+     quatre photos par ligne d environ 270 px, qui remplissent l espace. */
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 10px;
   margin: 1.8em 0;
   /* Une grille etablit son propre contexte de formatage : elle refuse donc de
@@ -45,7 +47,7 @@
 }
 
 /* Une grille d une seule photo reste affichee en grand, pas en vignette. */
-.grille--seule { grid-template-columns: minmax(0, 620px); justify-content: center; }
+.grille--seule { grid-template-columns: minmax(0, 760px); justify-content: center; }
 .grille--seule img { aspect-ratio: auto; object-fit: contain; }
 
 /* ---- Plein ecran ---- */
@@ -79,6 +81,6 @@
 .visionneuse .suivant { right: 1vw; }
 
 @media (max-width: 700px) {
-  .grille { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 6px; }
+  .grille { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px; }
   .visionneuse .precedent, .visionneuse .suivant { font-size: 26px; }
 }

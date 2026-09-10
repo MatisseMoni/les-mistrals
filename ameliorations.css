@@ -12,13 +12,25 @@
 .header-outer, .header-inner,
 .footer-outer, .footer-inner,
 .region-inner {
-  max-width: 1320px !important;
+  max-width: 1180px !important;
 }
 
+/* Le theme reservait 360 px de marge interieure a droite pour la colonne
+   laterale. Celle-ci ayant ete remplacee par le menu du haut, cette reserve
+   n a plus lieu d etre. */
+.columns {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* La colonne laterale a ete remplacee par le menu en haut : le contenu occupe
+   desormais toute la largeur disponible. */
 .columns-inner,
 .column-center-outer,
 .column-center-inner {
-  width: 960px !important;
+  width: 100% !important;
+  float: none !important;
+  margin: 0 !important;
 }
 
 .post, .post-body { width: auto !important; }
@@ -91,10 +103,6 @@
 
 /* ---- Confort de lecture sur petit ecran ---- */
 @media (max-width: 1000px) {
-  .columns-inner, .column-center-outer, .column-center-inner {
-    width: 100% !important;
-  }
-  .column-right-outer { float: none !important; margin: 0 !important; width: 100% !important; }
   .post-body img { max-width: 100% !important; }
 }
 

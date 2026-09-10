@@ -1,0 +1,119 @@
+/*
+ * Menu principal du site : bandeau colle en haut, lien d accueil et
+ * deroulant des pays. Remplace la colonne laterale du theme d origine.
+ */
+
+.menu-site {
+  position: sticky;
+  top: 0;
+  z-index: 500;
+  background: rgba(41, 28, 20, .96);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(247, 227, 189, .16);
+  box-shadow: 0 2px 14px rgba(0, 0, 0, .4);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.menu-interieur {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 54px;
+}
+
+.menu-titre {
+  color: #f7e3bd;
+  text-decoration: none;
+  font-size: 15px;
+  letter-spacing: .02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.menu-titre:hover { color: #ffcc77; }
+
+.menu-liens { display: flex; align-items: center; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.menu-liens > li { margin: 0; padding: 0; border: 0; }
+
+.menu-liens a,
+.menu-liens button {
+  display: block;
+  color: #f7e3bd;
+  background: none;
+  border: 0;
+  font: inherit;
+  font-size: 14px;
+  padding: 9px 14px;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.menu-liens a:hover,
+.menu-liens button:hover,
+.menu-liens button[aria-expanded="true"] {
+  background: rgba(247, 227, 189, .12);
+  color: #ffcc77;
+}
+.menu-liens .actif { color: #ffcc77; background: rgba(247, 227, 189, .1); }
+
+.menu-deroulant { position: relative; }
+.menu-fleche { font-size: 10px; margin-left: 5px; }
+
+.menu-panneau {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  display: none;
+  gap: 26px;
+  padding: 20px 24px;
+  background: #2c1e15;
+  border: 1px solid rgba(247, 227, 189, .18);
+  border-radius: 8px;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, .55);
+  max-height: 78vh;
+  overflow-y: auto;
+}
+.menu-panneau[data-ouvert="oui"] { display: flex; }
+
+.menu-groupe { min-width: 148px; }
+.menu-groupe h3 {
+  margin: 0 0 8px;
+  font-size: 11px;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: #b9a184;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(247, 227, 189, .14);
+  padding-bottom: 6px;
+}
+.menu-groupe ul { list-style: none; margin: 0; padding: 0; }
+.menu-groupe li { margin: 0; padding: 0; border: 0; }
+.menu-groupe a {
+  display: block;
+  padding: 6px 8px;
+  font-size: 14px;
+  color: #f0dcb6;
+  text-decoration: none;
+  border-radius: 4px;
+}
+.menu-groupe a:hover { background: rgba(247, 227, 189, .12); color: #ffcc77; }
+.menu-groupe a.actif { color: #ffcc77; background: rgba(247, 227, 189, .1); font-weight: 600; }
+
+@media (max-width: 760px) {
+  .menu-interieur { padding: 0 12px; gap: 10px; }
+  .menu-titre { font-size: 13px; }
+  .menu-panneau {
+    position: fixed;
+    left: 0; right: 0;
+    top: 54px;
+    flex-direction: column;
+    gap: 16px;
+    border-radius: 0;
+    max-height: calc(100vh - 54px);
+  }
+}

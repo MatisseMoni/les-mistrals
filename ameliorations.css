@@ -45,6 +45,8 @@
   padding-left: 0 !important;
   padding-right: 0 !important;
   border: 0 !important;
+  /* Ces conteneurs portent des float inline qui ecrasaient les grilles. */
+  float: none !important;
 }
 
 /* Le texte de recit vit parfois lui aussi dans une cellule de tableau :

@@ -8,6 +8,12 @@
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 10px;
   margin: 1.8em 0;
+  /* Une grille etablit son propre contexte de formatage : elle refuse donc de
+     chevaucher un flottant et se reduit a zero s il occupe toute la largeur.
+     Les tableaux du theme portent des float inline, d ou ce clear. */
+  clear: both;
+  width: 100%;
+  min-width: 0;
 }
 
 .grille figure { margin: 0; position: relative; }
